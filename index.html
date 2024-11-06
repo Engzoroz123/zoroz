@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zoroz Web Page</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+    h1 { font-size: 2.5em; color: #333; }
+    p { font-size: 1.2em; color: #666; }
+    .button { padding: 15px 30px; margin: 10px; font-size: 1em; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome to Zoroz Web Page</h1>
+  <p>In this web page you can control your home appliances from anywhere in the world.</p>
+  
+  <!-- LED Control Buttons -->
+  <button class="button" onclick="sendData('https://api.thingspeak.com/update?api_key=5IEEPB1VB73K1XO7&field1=1')">LED1 ON</button>
+  <button class="button" onclick="sendData('https://api.thingspeak.com/update?api_key=5IEEPB1VB73K1XO7&field1=0')">LED1 OFF</button>
+  <button class="button" onclick="sendData('https://api.thingspeak.com/update?api_key=5IEEPB1VB73K1XO7&field2=1')">LED2 ON</button>
+  <button class="button" onclick="sendData('https://api.thingspeak.com/update?api_key=5IEEPB1VB73K1XO7&field2=0')">LED2 OFF</button>
+  <button class="button" onclick="sendData('https://api.thingspeak.com/update?api_key=5IEEPB1VB73K1XO7&field3=1')">LED3 ON</button>
+  <button class="button" onclick="sendData('https://api.thingspeak.com/update?api_key=5IEEPB1VB73K1XO7&field3=0')">LED3 OFF</button>
+
+  <!-- Master Switch Buttons -->
+  <p>Master Switch</p>
+  <button class="button" onclick="sendData('https://api.thingspeak.com/update?api_key=5IEEPB1VB73K1XO7&field1=1&field2=1&field3=1')">Turn ON All</button>
+  <button class="button" onclick="sendData('https://api.thingspeak.com/update?api_key=5IEEPB1VB73K1XO7&field1=0&field2=0&field3=0')">Turn OFF All</button>
+
+  <script>
+    function sendData(url) {
+      fetch(url)
+        .then(response => alert("Data sent!"))
+        .catch(error => alert("Error sending data: " + error));
+    }
+  </script>
+
+</body>
+</html>
